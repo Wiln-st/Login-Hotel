@@ -1,0 +1,20 @@
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+}
+
+.register{
+    display: flex;
+    flex-direction: column;
+}
