@@ -18,6 +18,8 @@
 
         <input type="password" name="password" placeholder="Password">
 
+        <input name="token">
+
         <button type="submit">Login</button>
 
     </form>

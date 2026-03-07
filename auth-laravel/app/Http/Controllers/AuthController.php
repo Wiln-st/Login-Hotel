@@ -20,10 +20,13 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'role' => 'member',
+            'token' => $request->token
         ]);
 
         return redirect('/login');
@@ -33,10 +36,18 @@ class AuthController extends Controller
     {
         $user = User::where('name', $request->name)->first();
 
-        if($user && Hash::check($request->password, $user->password)){
-            return "Login berhasil";
+        if($user && Hash::check($request->password, $user->password) && $request->token == $user->token){
+            
+            if($user->role == 'admin'){
+                return "SELAMAT DATANG SESEPUH ADMIN !!!";
+            }
+            if($user->role == 'member'){
+                return "KAU MEMBER";
+            }
+        
         }
 
-        return "Login gagal";
+        return "CUPU
+        NOOB";
     }
 }

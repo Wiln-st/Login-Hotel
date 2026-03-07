@@ -20,9 +20,26 @@
 
         <input type="password" name="password" placeholder="Password">
 
+        <input type="text" name="token" id="token" readonly>
+
+        <button type="button" onclick="generateToken()">Generate Token</button>
+
         <button type="submit">Register</button>
 
     </form>
+
+    <script>
+        function generateToken(){
+            let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let token = "";
+
+            for(let i=0;i<5;i++){
+                token += chars.charAt(Math.floor(Math.random()*chars.length));
+            }
+
+            document.getElementById("token").value = token;
+        }
+    </script>
 </body>
 
 </html>
